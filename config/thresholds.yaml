@@ -1,0 +1,18 @@
+temperatures:
+  cpu_warning: 80      # °C - Warning threshold
+  cpu_critical: 90     # °C - Critical threshold  
+  ambient_warning: 35  # °C - Room temp warning
+  ambient_critical: 40 # °C - Room temp critical
+
+fans:
+  rpm_low_warning: 2000    # RPM - Fan failing/stopped
+  rpm_high_warning: 15000  # RPM - Fan max speed (thermal stress)
+
+power:
+  spike_threshold_watts: 500  # Watts - Sudden power jump detection
+
+# Optional: Per-server overrides
+# server_overrides:
+#   r730-gpu-01:
+#     temperatures:
+#       cpu_critical: 95  # Higher tolerance for overclocked CPU

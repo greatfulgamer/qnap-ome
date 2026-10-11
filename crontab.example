@@ -1,0 +1,18 @@
+# QNAP-OME Cron Configuration
+# Install with: crontab crontab
+
+# Poll iDRAC servers every minute
+*/1 * * * * cd /path/to/qnap-ome && python3 scripts/poll_idrac.py >> logs/cron.log 2>&1
+
+# Detect anomalies every 2 minutes
+*/2 * * * * cd /path/to/qnap-ome && python3 scripts/parse_events.py >> logs/cron.log 2>&1
+
+# Send notifications immediately after anomaly detection
+# (Triggered by parse_events.py exit code 2)
+*/2 * * * * cd /path/to/qnap-ome && [ $? -eq 2 ] && python3 scripts/notify.py >> logs/cron.log 2>&1
+
+# Daily log rotation (3am)
+0 3 * * * find /path/to/qnap-ome/logs -name "*.log" -mtime +7 -delete
+
+# Weekly database cleanup (Sunday 4am)
+0 4 * * 0 sqlite3 /path/to/qnap-ome/data/fleet.db "DELETE FROM sensor_readings WHERE timestamp < datetime('now', '-30 days');"

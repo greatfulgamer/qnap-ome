@@ -1,0 +1,16 @@
+servers:
+  # Example configuration - replace with your actual iDRAC details
+  - name: r730-gpu-01
+    idrac_ip: 192.168.100.11
+    username: root
+    password_env: IDRAC_PASSWORD_01
+    
+  - name: r730-gpu-02
+    idrac_ip: 192.168.100.12
+    username: root
+    password_env: IDRAC_PASSWORD_02
+    
+  - name: r730-gpu-03
+    idrac_ip: 192.168.100.13
+    username: root
+    password_env: IDRAC_PASSWORD_03

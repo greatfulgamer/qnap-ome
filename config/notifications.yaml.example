@@ -1,0 +1,21 @@
+telegram:
+  bot_token: ${TELEGRAM_BOT_TOKEN}  # Set env var or replace
+  chat_id: ${TELEGRAM_CHAT_ID}      # Set env var or replace
+  levels: [critical, warning]       # Send these severity levels
+
+email:
+  smtp_server: smtp.gmail.com
+  smtp_port: 587
+  username: ${EMAIL_USER}
+  password: ${EMAIL_PASS}
+  recipients: [admin@example.com]
+  levels: [critical]  # Only critical alerts via email
+
+ntfy:
+  topic: my-home-lab-alerts
+  server: https://ntfy.sh  # Or self-hosted: http://ntfy.local
+  levels: [info, warning, critical]
+
+webhook:
+  url: https://your-webhook-endpoint.com/alert  # Optional
+  # Useful for integrating with Home Assistant, IFTTT, etc.
